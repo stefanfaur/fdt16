@@ -1,4 +1,4 @@
-module sign_extend_tb;
+module SignExtend_tb;
     reg [8:0] immed;
     wire [15:0] ext_immed;
 
