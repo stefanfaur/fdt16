@@ -1,152 +1,106 @@
-# FIC PROJECT
+1. FIC Project
 
-## MILESTONES:
+   ## Milestones
 
-**Sesiunea 3 - S6 (2 puncte)**
-● Alegerea temei de proiect / set de instructiuni
-● Specificarea echipei
-● Impartirea rolurilor in echipa
-● Nume echipa
-● Bibliografie
+   ### Session 3 - Week 6 (2 Points)
 
-**Sesiunea 6 - S12 ( maxim nota 7)**
-● Design Hardware & Documentatie GP (2p)
-● Implementare General Purpose Processor (2)
-● Testare General Purpose Processor (1)
+   - **Topic Selection**
+     - Choose project theme/set of instructions
+   - **Team Specification**
+   - **Role Distribution in Team**
+   - **Team Name**
+   - **Bibliography**
 
-**Sesiunea 7 - S14 (maxim nota 10)**
-● Design & Implementare GP processor + ASIP; (1p)
-● Testare ASIP (1)
-● Prezentarea finala a proiectului - prezentare, documentatie (1)
+   ### Session 6 - Week 12 (Max Grade: 7)
 
-Testarea core-ului se face implementarea unor aplicatii folosind setul de instructiuni propus
-tradus in cod masina folosind un assembler sau scrierea directa de cod masina.
-( instruction file -> assembler/byte code -> memory -> execute instructions from memory)
+   - **Hardware Design & GP Documentation** (2 Points)
+   - **Implementation of General Purpose Processor** (2 Points)
+   - **Testing General Purpose Processor** (1 Point)
 
-## Echipa:
+   ### Session 7 - Week 14 (Max Grade: 10)
 
-```
-● HW Design (2 persoane)
-● Development (2-4 persoane)
-○ Developer (2-3)
-○ Testing and QA + UX (1)
-● Project Manager (1 persoana) : team management, impartire pe taskuri, timeline,
-prezentari
-```
-## General Purpose Processor (16-bit)
+   - **Design & Implementation of GP Processor + ASIP** (1 Point)
+   - **Testing ASIP** (1 Point)
+   - **Final Project Presentation** - presentation, documentation (1 Point)
 
-```
-● Registers:
-○ 16-bit Accumulator;
-○ 2 16-bit general purpose (GP) registers: X and Y;
-○ 4-bit Flag register: Zero, Negative, Carry, Overflow
-○ 16-bit stack pointer
-```
+   _Testing of the core involves implementing applications using the proposed instruction set translated into machine code using an assembler or writing machine code directly._
 
-```
-○ Program Counter
-● Instruction size: 16-bit
-● Word size: 16-bit
-● Stack grows inverse in memory.
-```
-### Core instruction set:
+   ### Team Composition
 
-```
-● Instruction size: 16-bit:
-○ 6-bit opcode
-○ 1-bit Register address
-○ 9-bit Immediate size
-```
-**Memory instructions** : Load, Store into registers Xor Y
+   ```plaintext
+   - HW Design (2 People)
+   - Development (2-4 People)
+   - Developer (2-3 People)
+   - Testing and QA + UX (1 Person)
+   - Project Manager (1 Person): Team management, task assignment, timeline, presentations
+   ```
 
-```
-Opcode Register Address Immediate
-```
-```
-6 bit 1 bit 9 bit
-```
-**Branch instructions** :
-● BRZ = branch if zero
-● BRN = branch if negative
-● BRC = branch if carry
-● BRO = branch if overflow
-● BRA = branch always (unconditional branch)
-● JMP = call procedure
-● RET = return from procedure
+2. ## General Purpose Processor (16-bit)
 
-```
-Opcode Address
-```
-```
-6 bit 10 bit
-```
-CALL/JMP push PC on stack. All procedure parameters are passed using stack.
-RET pop PC from stack. Return value is passed usingstack.
+   ### Components
 
-**Arithmetic and Logic Instructions:
-● ADD
-● SUB
-● LSR
-● LSL
-● RSR**
+   - Registers:
+     - 16-bit Accumulator
+     - 2x 16-bit General Purpose (GP) Registers: X and Y
+     - 4-bit Flag Register: Zero, Negative, Carry, Overflow
+     - 16-bit Stack Pointer
+   - **Program Counter**
+   - **Instruction Size:** 16-bit
+   - **Word Size:** 16-bit
+   - **Stack Growth:** Inverse in memory
 
+   ### Core Instruction Set
 
-#### ● RSL
+   - Instruction Size:
 
-#### ● MOV
+      16-bit
 
-#### ● MUL
+     - 6-bit Opcode
+     - 1-bit Register Address
+     - 9-bit Immediate Size
 
-#### ● DIV
+   #### Memory Instructions
 
-#### ● MOD
+   - Load, Store into Registers X or Y
 
-#### ● AND
+     | Opcode | Register Address | Immediate |
+     | ------ | ---------------- | --------- |
+     | 6 bit  | 1 bit            | 9 bit     |
 
-#### ● OR
+   #### Branch Instructions
 
-#### ● XOR
+   - BRZ, BRN, BRC, BRO, BRA, JMP, RET
 
-#### ● NOT
+     | Opcode | Address |
+     | ------ | ------- |
+     | 6 bit  | 10 bit  |
 
-#### ● CMP
+   #### Arithmetic and Logic Instructions
 
-#### ● TST
+   - ADD, SUB, LSR, LSL, RSR, RSL, MOV, MUL, DIV, MOD, AND, OR, XOR, NOT, CMP, TST, INC, DEC
 
-#### ● INC
+     | Opcode | Register Address | Immediate |
+     | ------ | ---------------- | --------- |
+     | 6 bit  | 1 bit            | 9 bit     |
 
-#### ● DEC
+   ### Minimum Required CPU Components
 
-```
-Opcode Register Address Immediate
-```
-```
-6 bit 1 bit 9 bit
-```
-Only arithmetic and logic instructions should update the Flag register!
+   - 2 General Purpose Registers: X, Y, and one Accumulator A
+   - ALU (Arithmetic Logic Unit)
+   - Control Unit
+   - Instruction and Data Memory (includes Stack)
+   - Sign Extend Unit
+   - Processor Registers: PC (Program Counter), SP (Stack Pointer), Flag
 
-## Minimum required CPU Components
+   ## Application-Specific Instruction Set Processor (ASIP)
 
-```
-● 2 general purpose registers: X, Y, and one accumulator A
-● ALU
-● Control Unit
-● Instruction and Data memory (includes Stack)
-● Sign Extend unit
-● Processor registers: PC, SP, Flag
-```
-## Application-Specific Instruction Set Processor (ASIP)
+   1. Develop instructions for specific cores
+   2. Essential for the final Milestone
 
-1. Come up with instructions for specific cores
-2. Required for the final Milestone.
+   ### Possible Applications (Open to Other Ideas)
 
-
-### Possible applications (can come up with other ideas):
-
-1. Calculator de buzunar
-2. Operatii cu tensori
-3. Floating Point Coprocessor
-4. Cryptographic core
-5. Crypto currency mining (hashing) core
-
-
+   1. Pocket Calculator
+   2. Tensor Operations
+   3. Floating Point Coprocessor
+   4. Cryptographic Core
+   5. Cryptocurrency Mining (Hashing) Core
