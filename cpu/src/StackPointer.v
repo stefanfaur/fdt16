@@ -1,4 +1,4 @@
-module SP(
+module StackPointer(
     input pop, push, reset, clk,
     output reg [15:0] out
 );

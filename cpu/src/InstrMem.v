@@ -1,7 +1,7 @@
 module InstrMem(
     input clk,
     input en_write,
-    input [9:0] program_counter,
+    input [10:0] program_counter,
     input [15:0] data_in,
     output [15:0] data_out
 );

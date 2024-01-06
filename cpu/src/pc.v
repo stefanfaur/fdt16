@@ -1,7 +1,7 @@
 module PC(
     input [8:0] branch_address,
     input branch, stall, clk, reset,
-    output reg [8:0] pc_out
+    output reg [10:0] pc_out
 );
 
     always @(posedge clk or posedge reset) begin

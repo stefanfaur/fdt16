@@ -1,10 +1,10 @@
 `timescale 1ns / 1ps
 
-module SP_tb();
+module StackPointer_tb();
 
     reg pop, push, reset, clk;
     wire [15:0] out;
-    SP sp_instance(.pop(pop), .push(push), .reset(reset), .clk(clk), .out(out));
+    StackPointer sp_instance(.pop(pop), .push(push), .reset(reset), .clk(clk), .out(out));
 
     // Clock generation
     always #10 clk = ~clk; // 50 MHz Clock

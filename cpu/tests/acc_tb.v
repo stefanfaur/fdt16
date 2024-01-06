@@ -15,7 +15,7 @@ module Acc_tb;
     Acc uut (
         .clk(clk),
         .reset(reset),
-        .enable(enable),
+        .acc_enable(enable),
         .data_in(data_in),
         .data_out(data_out)
     );
