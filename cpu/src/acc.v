@@ -2,7 +2,7 @@ module Acc (
     input wire clk,
     input wire reset,
     input wire enable,
-    input wire [15:0] data_in,
+    input wire [15:0] data_in, // this will be alu_out
     output wire [15:0] data_out
 );
 
