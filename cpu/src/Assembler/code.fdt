@@ -1,0 +1,12 @@
+MOV X, #16
+ADD X, #8
+MOV X, A
+MOV Y, #3
+INC X
+JMP 34
+LSR X
+RET 
+CMP Y, #3 
+BRZ 5
+
+
