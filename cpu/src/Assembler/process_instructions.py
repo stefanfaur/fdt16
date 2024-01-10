@@ -38,7 +38,9 @@ def assemble_instruction(instruction, operand1=None, operand2=None):
     registers = {"X": "0", "Y": "1"}
 
     # Start assembling the instruction
-    opcode = opcodes.get(instruction, "??????")
+    opcode = opcodes.get(instruction)
+    if opcode is None:
+        raise ValueError(f"Invalid opcode: {instruction}")
     reg = ""
     immediate = ""
 
@@ -49,7 +51,7 @@ def assemble_instruction(instruction, operand1=None, operand2=None):
     if operand2 and operand2.startswith('#'):
             immediate = format(int(operand2[1:]), '09b')  # Immediate value
     elif operand2 == "A":
-        immediate = format(511, '09b')
+        immediate = format(511, '09b') # hardcoded, not sure how to handle this better
     elif operand2 == "X":
         immediate = format(510, '09b')
     elif operand2 == "Y":

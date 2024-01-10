@@ -7,6 +7,6 @@ JMP 34
 LSR X
 RET 
 CMP Y, #3 
-BRZ 5
+BcZ 5
 
 
