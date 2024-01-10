@@ -3,12 +3,13 @@ module ALU(
     input [15:0] term1, term2,
     input [5:0] opcode,
     output reg [15:0] alu_out,
-    output reg zero, negative, overflow, carry
+    output reg zero, negative, overflow, carry, flags_en
 );
 
 always @(*) begin
     if (store) alu_out = term1;
     else begin
+        flags_en = 1'b1;
     case (opcode)
         6'b010001: begin // ADD
             alu_out = term1 + term2;
@@ -145,6 +146,7 @@ always @(*) begin
             carry = 1'b0;
         end  
     endcase
+    flags_en = 1'b0;
     end
 end
 

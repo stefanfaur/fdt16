@@ -160,7 +160,7 @@ StackPointer stack_pointer(
     .out(stack_ptr)///
 );
 
-wire alu_zero, alu_negative, alu_carry, alu_overflow;
+wire alu_zero, alu_negative, alu_carry, alu_overflow, flags_en;///
 
 ALU alu(
     .store(store),
@@ -172,6 +172,7 @@ ALU alu(
     .negative(alu_negative),///
     .overflow(alu_overflow),///
     .carry(alu_carry)///
+    .flags_en(flags_en)///
 );
 
 Flags flags(
