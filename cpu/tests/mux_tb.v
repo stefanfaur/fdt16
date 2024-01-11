@@ -14,7 +14,6 @@ module Mux4to1_tb;
     );
 
     initial begin
-        // Test case 1
         in0 = 16'h1234;
         in1 = 16'h5678;
         in2 = 16'h9ABC;
@@ -23,7 +22,6 @@ module Mux4to1_tb;
         #10;
         $display("sel = %b ---> out = %h", sel, out);
 
-        // Test case 2
         in0 = 16'h1234;
         in1 = 16'h5678;
         in2 = 16'h9ABC;
@@ -32,7 +30,6 @@ module Mux4to1_tb;
         #10;
         $display("sel = %b ---> out = %h", sel, out);
 
-        // Test case 3
         in0 = 16'h1234;
         in1 = 16'h5678;
         in2 = 16'h9ABC;
@@ -41,7 +38,6 @@ module Mux4to1_tb;
         #10;
         $display("sel = %b ---> out = %h", sel, out);
 
-        // Test case 4
         in0 = 16'h1234;
         in1 = 16'h5678;
         in2 = 16'h9ABC;

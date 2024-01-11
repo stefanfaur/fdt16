@@ -2,16 +2,13 @@
 
 module ALU_tb;
 
-// Declare wires for the inputs
 reg signed [15:0] term1, term2;
 reg [5:0] opcode;
 reg store;
 
-// Declare wires for the outputs
 wire signed [15:0] alu_out;
 wire zero, negative, overflow, carry;
 
-// Instantiate the ALU module
 ALU uut (
     .store(store),
     .term1(term1),
@@ -24,14 +21,11 @@ ALU uut (
     .carry(carry)
 );
 
-// Test procedure
 initial begin
-    // Initialize inputs
     store = 0;
     term1 = 16'b0000111100001111;
     term2 = 16'b1111000011110000;
 
-    // Test each opcode
     opcode = 6'b010001; // ADD
     #10 $display("ADD: term1 = %b, term2 = %b, alu_out = %b, zero = %b, negative = %b, overflow = %b, carry = %b", term1, term2, alu_out, zero, negative, overflow, carry);
     $display("ADD: term1 = %d, term2 = %d, alu_out = %d, zero = %d, negative = %d, overflow = %d, carry = %d", term1, term2, alu_out, zero, negative, overflow, carry);
@@ -133,7 +127,6 @@ initial begin
     $display("NOP: term1 = %d, alu_out = %d, zero = %d, negative = %d, overflow = %d", term1, alu_out, zero, negative, overflow);
     $display("");
 
-        // End the simulation
     #10 $finish;
     end
 

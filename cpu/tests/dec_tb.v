@@ -2,42 +2,36 @@
 
 module Decoder1to2_tb;
 
-    // Declare wires for the inputs
-    reg enable, reg_id;
+    reg reg_select;
+    reg [15:0] reg_data;
 
-    // Declare wires for the outputs
-    wire output0, output1;
+    wire [15:0] output0, output1;
 
-    // Instantiate the Decoder_1to2 module
     Decoder1to2 uut (
-        .enable(enable),
-        .reg_id(reg_id),
+        .reg_select(reg_select),
+        .reg_data(reg_data),
         .output0(output0),
         .output1(output1)
     );
 
-    // Test procedure
     initial begin
-        // Initialize inputs
-        enable = 0;
-        reg_id = 0;
+        reg_select = 0;
+        reg_data = 16'b0;
 
-        // Test each possible input combination
-        #10 $display("enable = %b, reg_id = %b, output0 = %b, output1 = %b", enable, reg_id, output0, output1);
+        #10 $display("reg_select = %b, reg_data = %b, output0 = %b, output1 = %b", reg_select, reg_data, output0, output1);
 
-        enable = 1;
-        reg_id = 0;
-        #10 $display("enable = %b, reg_id = %b, output0 = %b, output1 = %b", enable, reg_id, output0, output1);
+        reg_select = 1;
+        reg_data = 16'b0;
+        #10 $display("reg_select = %b, reg_data = %b, output0 = %b, output1 = %b", reg_select, reg_data, output0, output1);
 
-        enable = 0;
-        reg_id = 1;
-        #10 $display("enable = %b, reg_id = %b, output0 = %b, output1 = %b", enable, reg_id, output0, output1);
+        reg_select = 0;
+        reg_data = 16'b1;
+        #10 $display("reg_select = %b, reg_data = %b, output0 = %b, output1 = %b", reg_select, reg_data, output0, output1);
 
-        enable = 1;
-        reg_id = 1;
-        #10 $display("enable = %b, reg_id = %b, output0 = %b, output1 = %b", enable, reg_id, output0, output1);
+        reg_select = 1;
+        reg_data = 16'b1;
+        #10 $display("reg_select = %b, reg_data = %b, output0 = %b, output1 = %b", reg_select, reg_data, output0, output1);
 
-        // End the simulation
         #10 $finish;
     end
 

@@ -1,3 +1,5 @@
 .DS_Store
 *.vvp
 *.vcd
+/src/Assembler/__pycache__
+```
