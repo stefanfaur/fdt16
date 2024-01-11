@@ -1,106 +1,68 @@
-1. FIC Project
+# FDT-16 Processor
 
-   ## Milestones
+This repository contains the source code for the FDT-16 processor. The processor is implemented in Verilog and includes a variety of modules, an assembler written in Python, and a suite of tests.
 
-   ### Session 3 - Week 6 (2 Points)
+## Available Verilog Modules
 
-   - **Topic Selection**
-     - Choose project theme/set of instructions
-   - **Team Specification**
-   - **Role Distribution in Team**
-   - **Team Name**
-   - **Bibliography**
+- ALU
+- Flags Register
+- Accumulator Register
+- Control Unit (To be implemented)
+- Data Memory
+- Stack Pointer
+- Instruction Memory
+- Instruction Decoder
+- Sign Extend
+- CPU (topmodule)
+- Multiplexers
+- Program Counter
+- Registers
+- Decoder (to pick working register)
 
-   ### Session 6 - Week 12 (Max Grade: 7)
+### Running Tests
 
-   - **Hardware Design & GP Documentation** (2 Points)
-   - **Implementation of General Purpose Processor** (2 Points)
-   - **Testing General Purpose Processor** (1 Point)
+Before running the tests, make sure you have icarus-verilog installed and set in your PATH as `iverilog`(on Mac you sometimes have to do it manually).
+To run all tests, navigate to the `cpu/src/tests` directory and run the `run_all.sh` script:
 
-   ### Session 7 - Week 14 (Max Grade: 10)
+```bash
+cd cpu/src/tests
+bash run_all.sh
+```
 
-   - **Design & Implementation of GP Processor + ASIP** (1 Point)
-   - **Testing ASIP** (1 Point)
-   - **Final Project Presentation** - presentation, documentation (1 Point)
+To run an individual test, use the `run_<testname>.sh` script, replacing `<testname>` with the name of the test you want to run:
 
-   _Testing of the core involves implementing applications using the proposed instruction set translated into machine code using an assembler or writing machine code directly._
+```bash 
+bash run_<testname>.sh
+```
 
-   ### Team Composition
+### Assembler
 
-   ```plaintext
-   - HW Design (2 People)
-   - Development (2-4 People)
-   - Developer (2-3 People)
-   - Testing and QA + UX (1 Person)
-   - Project Manager (1 Person): Team management, task assignment, timeline, presentations
-   ```
+The assembler is located in the `cpu/src/Assembler` directory. To run the assembler, use the `assembler.py` script with the input and output file names as arguments:
 
-2. ## General Purpose Processor (16-bit)
+```bash
+python3 assembler.py input_file output_file
+```
 
-   ### Components
+The assembler can handle comments(`//`).
 
-   - Registers:
-     - 16-bit Accumulator
-     - 2x 16-bit General Purpose (GP) Registers: X and Y
-     - 4-bit Flag Register: Zero, Negative, Carry, Overflow
-     - 16-bit Stack Pointer
-   - **Program Counter**
-   - **Instruction Size:** 16-bit
-   - **Word Size:** 16-bit
-   - **Stack Growth:** Inverse in memory
+Here is some sample code: 
 
-   ### Core Instruction Set
+```assembly
+MOV X, #16
+ADD X, #8
+MOV X, A
+MOV Y, #3
+INC X
+JMP 34 	// jump somewhere
+LSR X
+RET 
+CMP Y, #3 
+BRZ 5
+```
 
-   - Instruction Size:
 
-      16-bit
 
-     - 6-bit Opcode
-     - 1-bit Register Address
-     - 9-bit Immediate Size
+### Hardware Schematic
 
-   #### Memory Instructions
+A detailed hardware schematic of the processor can be found [here](https://github.com/stefanfaur/fdt16/blob/main/hw_v3.png). 
 
-   - Load, Store into Registers X or Y
-
-     | Opcode | Register Address | Immediate |
-     | ------ | ---------------- | --------- |
-     | 6 bit  | 1 bit            | 9 bit     |
-
-   #### Branch Instructions
-
-   - BRZ, BRN, BRC, BRO, BRA, JMP, RET
-
-     | Opcode | Address |
-     | ------ | ------- |
-     | 6 bit  | 10 bit  |
-
-   #### Arithmetic and Logic Instructions
-
-   - ADD, SUB, LSR, LSL, RSR, RSL, MOV, MUL, DIV, MOD, AND, OR, XOR, NOT, CMP, TST, INC, DEC
-
-     | Opcode | Register Address | Immediate |
-     | ------ | ---------------- | --------- |
-     | 6 bit  | 1 bit            | 9 bit     |
-
-   ### Minimum Required CPU Components
-
-   - 2 General Purpose Registers: X, Y, and one Accumulator A
-   - ALU (Arithmetic Logic Unit)
-   - Control Unit
-   - Instruction and Data Memory (includes Stack)
-   - Sign Extend Unit
-   - Processor Registers: PC (Program Counter), SP (Stack Pointer), Flag
-
-   ## Application-Specific Instruction Set Processor (ASIP)
-
-   1. Develop instructions for specific cores
-   2. Essential for the final Milestone
-
-   ### Possible Applications (Open to Other Ideas)
-
-   1. Pocket Calculator
-   2. Tensor Operations
-   3. Floating Point Coprocessor
-   4. Cryptographic Core
-   5. Cryptocurrency Mining (Hashing) Core

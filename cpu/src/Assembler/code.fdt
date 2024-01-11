@@ -3,10 +3,10 @@ ADD X, #8
 MOV X, A
 MOV Y, #3
 INC X
-JMP 34
+JMP 34 // sar undeva
 LSR X
 RET 
 CMP Y, #3 
-BcZ 5
+BRZ 5
 
 

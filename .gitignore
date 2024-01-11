@@ -1,5 +1,5 @@
 .DS_Store
 *.vvp
 *.vcd
-/src/Assembler/__pycache__
 ```
+cpu/src/Assembler/__pycache__
